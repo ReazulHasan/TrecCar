@@ -1,4 +1,4 @@
-package com.cs.unh.ir.eval;
+package edu.unh.cs.ir.eval;
 
 /**
  * Created by Reazul Hasan Russel on 2/3/2017.
