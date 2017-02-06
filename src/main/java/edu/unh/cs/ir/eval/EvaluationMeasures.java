@@ -1,4 +1,4 @@
-package edu.unh.cs.ir.eval;
+package main.java.edu.unh.cs.ir.eval;
 // Starter file for evaluation measures
 
 
