@@ -88,6 +88,32 @@ class ClassificationBaseMetricsTest {
         assertEquals(f1, eval.getBalancedF1Score());
     }
 
+    @Test
+    void getRPrecision(){
+        int k =5;
+        double rPrecision = 2.0/4.0;
+
+        assertEquals(rPrecision, eval.getRPrecision(k));
+    }
+
+    //Worked average precision problems from https://www.youtube.com/watch?v=pM6DJ0ZZee0
+    @Test
+    void getAveragePrecision(){
+        int[] results = {1,0,1,0,0,1,0,0,1,1};
+        double avgPrecision = 0.62;
+
+        eval = new ClassificationBaseMetrics(results);
+        assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
+    }
+
+    @Test
+    void getAveragePrecision2(){
+        int[] results = {0,1,0,0,1,0,1,0,0,0};
+        double avgPrecision = 0.44;
+
+        eval = new ClassificationBaseMetrics(results);
+        assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
+    }
 
     @BeforeEach
     void setUp() {

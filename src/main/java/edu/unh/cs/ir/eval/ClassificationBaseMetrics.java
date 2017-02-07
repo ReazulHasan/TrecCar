@@ -65,6 +65,24 @@ public class ClassificationBaseMetrics {
         return 2 * (precision*recall)/(precision+recall);
     }
 
+    //Gets R-Precision
+    public double getRPrecision(int k){
+        return (double) getRelevantResultsCount(k)/getTotalRelevantCount();
+    }
+
+    //Gets average precision
+    public double getAveragePrecision(){
+        double accum =0;
+
+        for(int i=0;i< getResultsSize();i++){
+            if(results.get(i)==Relevancy.RELEVANT) {
+                accum += getPrecision(i + 1);
+            }
+        }
+
+        return accum/getRelevantResultsCount();
+    }
+
     //helper method for relevant results in result set
     private int getRelevantResultsCount(){
         int accum=0;
