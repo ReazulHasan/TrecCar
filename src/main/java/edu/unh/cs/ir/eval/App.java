@@ -1,4 +1,4 @@
-package main.java.edu.unh.cs.ir.eval;
+package edu.unh.cs.ir.eval;
 
 /**
  * Hello world!

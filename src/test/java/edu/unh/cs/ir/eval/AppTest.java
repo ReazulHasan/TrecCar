@@ -1,4 +1,4 @@
-package test.java.edu.unh.cs.ir.eval;
+package edu.unh.cs.ir.eval;
 
 /**
  * Unit test for simple App.

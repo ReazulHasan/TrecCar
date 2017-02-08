@@ -1,4 +1,4 @@
-package main.java.edu.unh.cs.ir.eval;
+package edu.unh.cs.ir.eval;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Evaluation {
     private static final int GROUND_TRUTH = 1, EVAL_DATA = 2;
     private static final String DEFAULT_GROUND_TRUTH = "spritzer.cbor.toplevel.qrels";
-    HashMap<String, ArrayList<String>> mpGroundTruth, mpEvalData;
+    HashMap<String, ArrayList<EvalData>> mpGroundTruth, mpEvalData;
 
     /*
     * Create instance of evaluation by passing the file name of the data file, default ground truth
@@ -21,8 +21,8 @@ public class Evaluation {
     public Evaluation(String strEvalData){
         mpGroundTruth = new HashMap<>();
         mpEvalData = new HashMap<>();
-        readData(DEFAULT_GROUND_TRUTH, GROUND_TRUTH);
-        readData(strEvalData, EVAL_DATA);
+        readGroundTruth(DEFAULT_GROUND_TRUTH);
+        readEvalData(strEvalData);
     }
 
     /*
@@ -31,35 +31,35 @@ public class Evaluation {
     public Evaluation(String strGroundTruth, String strEvalData){
         mpGroundTruth = new HashMap<>();
         mpEvalData = new HashMap<>();
-        readData(strGroundTruth, GROUND_TRUTH);
-        readData(strEvalData, EVAL_DATA);
+        readGroundTruth(strGroundTruth);
+        readEvalData(strEvalData);
     }
 
     /*
     * get the hashmap containing the parsed ground truth
     * */
-    public HashMap<String, ArrayList<String>> getGroundTruth(){
+    public HashMap<String, ArrayList<EvalData>> getGroundTruth(){
         return mpGroundTruth;
     }
 
     /*
     * get the list of the values for the key
     * */
-    public ArrayList<String> getGroundTruth(String key){
+    public ArrayList<EvalData> getGroundTruth(String key){
         return mpGroundTruth.get(key);
     }
 
     /*
     * get the hashmap containing the parsed data to be evaluated
     * */
-    public HashMap<String, ArrayList<String>> getEvalData(){
+    public HashMap<String, ArrayList<EvalData>> getEvalData(){
         return mpEvalData;
     }
 
     /*
     * get the list of the values for the key
     * */
-    public ArrayList<String> getEvalData(String key){
+    public ArrayList<EvalData> getEvalData(String key){
         return mpEvalData.get(key);
     }
 
@@ -68,35 +68,21 @@ public class Evaluation {
     * only need to pass a new dataset tobe tested. pass the new data set here in this method, it will be parsed here
     * and the parsed hashmap will be available using the getter methods.
     * */
-    public void readEvalData(String strEvalData){
+    /*public void readEvalData(String strEvalData){
         mpEvalData = new HashMap<>();
         readData(strEvalData,EVAL_DATA);
-    }
+    }*/
 
-    /*
-    * This method is used to read and parse the data.
-    * */
-    private void readData(String file, int what){
+    private void readGroundTruth(String file){
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 String ar[] = line.split(" ");
-                if(ar[3].equals("1") && what==GROUND_TRUTH) {
-                    System.out.println("Ground Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
-                    if(mpGroundTruth.containsKey(ar[0]))
-                        mpGroundTruth.get(ar[0]).add(ar[2]);
-                    else{
-                        mpGroundTruth.put(ar[0], new ArrayList<>());
-                        mpGroundTruth.get(ar[0]).add(ar[2]);
-                    }
-                }
-                else if(ar[3].equals("1") && what==EVAL_DATA) {
-                    System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
-                    if(mpEvalData.containsKey(ar[0]))
-                        mpEvalData.get(ar[0]).add(ar[2]);
-                    else{
-                        mpEvalData.put(ar[0], new ArrayList<>());
-                        mpEvalData.get(ar[0]).add(ar[2]);
-                    }
+                System.out.println("Ground Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
+                if(mpGroundTruth.containsKey(ar[0]))
+                    mpGroundTruth.get(ar[0]).add(new EvalData(ar[2], ar[3]));
+                else{
+                    mpGroundTruth.put(ar[0], new ArrayList<>());
+                    mpGroundTruth.get(ar[0]).add(new EvalData(ar[2], ar[3]));
                 }
             }
         }  catch (IOException e) {
@@ -104,13 +90,34 @@ public class Evaluation {
         }
     }
 
+    private void readEvalData(String file){
+        mpEvalData = new HashMap<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            for(String line; (line = br.readLine()) != null; ) {
+                String ar[] = line.split("\\s+");
+                System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
+                if(mpEvalData.containsKey(ar[0]))
+                    mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
+                else{
+                    mpEvalData.put(ar[0], new ArrayList<>());
+                    mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
+                }
+            }
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String arg[]){
-        System.out.println("Hello Evaluation! "+arg[0]);
-        Evaluation eval = new Evaluation(arg[0], "spritzer.cbor.toplevel.eval.qrels");
+        //System.out.println("Hello Evaluation! "+arg[0]);
+        Evaluation eval = new Evaluation("spritzer.cbor.article.qrels", "results.spritzer.cbor.article.qrels.test");
         //eval.readData(arg[0], GROUND_TRUTH);
-        HashMap<String, ArrayList<String>> mpGt = eval.getGroundTruth();
-        HashMap<String, ArrayList<String>> mpEd = eval.getEvalData();
+        HashMap<String, ArrayList<EvalData>> mpGt = eval.getGroundTruth();
+        HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
+        ArrayList<EvalData> al = mpEd.get("Green%20sea%20turtle");
+        for(EvalData ed : al){
+            System.out.println("id: "+ed.getId()+", relevance: "+ed.getRelevance());
+        }
         System.out.println("mpGt.size: "+mpGt.size()+", mpEd.size: "+mpEd.size());
     }
 }

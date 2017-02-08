@@ -1,3 +1,5 @@
+package edu.unh.cs.ir.eval;
+
 import java.util.ArrayList;
 
 /**

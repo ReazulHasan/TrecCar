@@ -1,3 +1,5 @@
+package edu.unh.cs.ir.eval;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
