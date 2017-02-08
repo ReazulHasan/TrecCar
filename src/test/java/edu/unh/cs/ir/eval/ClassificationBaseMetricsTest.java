@@ -51,27 +51,27 @@ class ClassificationBaseMetricsTest {
     @Test
     void getPrecision(){
         double precision = 4.0/10;
-        assertEquals(precision, eval.getPrecision());
+        assertEquals(precision, eval.getPrecision(),0.001);
     }
 
     @Test
     void getPrecisionAtK(){
         int k = 3;
         double precision = 2.0/3;
-        assertEquals(precision, eval.getPrecision(k));
+        assertEquals(precision, eval.getPrecision(k),0.001);
     }
 
     @Test
     void getPrecisionAtK2(){
         int k = 9;
         double precision = 4.0/9;
-        assertEquals(precision, eval.getPrecision(k));
+        assertEquals(precision, eval.getPrecision(k),0.001);
     }
 
     @Test
     void getRecall(){
         double recall = 4.0/4;
-        assertEquals(recall, eval.getRecall());
+        assertEquals(recall, eval.getRecall(),0.001);
     }
 
     @Test
@@ -79,7 +79,7 @@ class ClassificationBaseMetricsTest {
         int totalRelevant =10;
         double recall = 4.0/totalRelevant;
         eval = new ClassificationBaseMetrics(baseResults,totalRelevant);
-        assertEquals(recall, eval.getRecall());
+        assertEquals(recall, eval.getRecall(),0.001);
     }
 
     @Test
@@ -88,7 +88,7 @@ class ClassificationBaseMetricsTest {
         double recall = 4.0/4.0;
         double f1 = 2 *(precision*recall)/(precision+recall);
 
-        assertEquals(f1, eval.getBalancedF1Score());
+        assertEquals(f1, eval.getBalancedF1Score(),0.001);
     }
 
     @Test
@@ -96,7 +96,7 @@ class ClassificationBaseMetricsTest {
         int k =5;
         double rPrecision = 2.0/4.0;
 
-        assertEquals(rPrecision, eval.getRPrecision(k));
+        assertEquals(rPrecision, eval.getRPrecision(k),0.001);
     }
 
     //Worked average precision problems from https://www.youtube.com/watch?v=pM6DJ0ZZee0

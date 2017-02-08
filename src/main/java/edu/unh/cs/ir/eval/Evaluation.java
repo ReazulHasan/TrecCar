@@ -73,11 +73,37 @@ public class Evaluation {
         readData(strEvalData,EVAL_DATA);
     }*/
 
+    public int[] getRelevancyResults(String topicIdentifier){
+
+        ArrayList<Integer> results = new ArrayList<>();
+        ArrayList<String> groundTruthResults= new ArrayList<>();
+
+        for(EvalData ed : mpGroundTruth.get(topicIdentifier)){
+            groundTruthResults.add(ed.getId());
+        }
+
+        for(EvalData ed : mpEvalData.get(topicIdentifier)){
+            if (groundTruthResults.contains(ed.getId())){
+                results.add(1);
+            }
+            else{
+                results.add(0);
+            }
+        }
+
+        int[] intResults = new int[results.size()];
+        for (int i = 0; i < intResults.length; i++) {
+            intResults[i] = results.get(i);
+        }
+
+        return intResults;
+    }
+
     private void readGroundTruth(String file){
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 String ar[] = line.split(" ");
-                System.out.println("Ground Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
+//                System.out.println("Ground Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
                 if(mpGroundTruth.containsKey(ar[0]))
                     mpGroundTruth.get(ar[0]).add(new EvalData(ar[2], ar[3]));
                 else{
@@ -95,7 +121,7 @@ public class Evaluation {
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 String ar[] = line.split("\\s+");
-                System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
+//                System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
                 if(mpEvalData.containsKey(ar[0]))
                     mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
                 else{
@@ -116,7 +142,7 @@ public class Evaluation {
         HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
         ArrayList<EvalData> al = mpEd.get("Green%20sea%20turtle");
         for(EvalData ed : al){
-            System.out.println("id: "+ed.getId()+", relevance: "+ed.getRelevance());
+            System.out.println("id: "+ed.getId());
         }
         System.out.println("mpGt.size: "+mpGt.size()+", mpEd.size: "+mpEd.size());
     }
