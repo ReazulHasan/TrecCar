@@ -3,29 +3,49 @@ package edu.unh.cs.ir.eval;
 import java.util.ArrayList;
 
 /**
- * Created by matt on 2/7/17.
+ * This class calculates information retrieval performance measures across
+ * multiple query result sets
  */
 public class ClassificationAggregatedMetrics {
 
     private ArrayList<ClassificationBaseMetrics> results;
 
+    /**
+     *  Creates an empty class where individual results sets can be added
+     *  using {@link #addMetrics(ClassificationBaseMetrics)}
+     */
     public ClassificationAggregatedMetrics(){
         results=new ArrayList<ClassificationBaseMetrics>();
     }
 
+    /** Creates a class using the passed in query result sets
+     *
+     * @param metrics Array list of query results
+     */
     public ClassificationAggregatedMetrics(ArrayList<ClassificationBaseMetrics> metrics){
         this.results=metrics;
     }
 
-    public void addMetrics(ClassificationBaseMetrics c){
-        results.add(c);
+    /**
+     * Adds a query result set for analysis
+     * @param results the query result set to add
+     */
+    public void addMetrics(ClassificationBaseMetrics results){
+        this.results.add(results);
     }
 
+    /**
+     * Returns the query resultsets stored in the object
+     *
+     */
     public ArrayList<ClassificationBaseMetrics> getBaseMetrics(){
         return results;
     }
 
-    //Get precision for each complete result set averaged across all result sets
+    /**
+     * Get precision for each complete result set averaged across all result sets
+     * @return the arithmetic mean of all the stored query result sets
+     */
     public double getPrecision(){
         double accum =0;
         for(ClassificationBaseMetrics m: results){
@@ -34,7 +54,12 @@ public class ClassificationAggregatedMetrics {
         return accum/ results.size();
     }
 
-    //Get precision at k averaged across all result sets
+    /**
+     * Get precision at k averaged across all result sets
+     * @param k the cutoff in the result sets using {@link ClassificationBaseMetrics#getPrecision(int)}
+     *          Corner conditions are handled by that method.
+     *
+     */
     public double getPrecision(int k){
         double accum =0;
         for(ClassificationBaseMetrics m: results){
@@ -43,7 +68,12 @@ public class ClassificationAggregatedMetrics {
         return accum/ results.size();
     }
 
-    //Get R precision at k averaged across all result sets
+    /**
+     * Get R precision at k averaged across all result sets
+     * @param k the cutoff in the result sets using {@link ClassificationBaseMetrics#getPrecision(int)}
+     *          Corner conditions are handled by that method.
+     *
+     */
     public double getRPrecision(int k){
         double accum =0;
         for(ClassificationBaseMetrics m: results){
@@ -52,7 +82,10 @@ public class ClassificationAggregatedMetrics {
         return accum/ results.size();
     }
 
-    //Get mean average precision across all result sets
+    /**
+     * Returns the mean average precision across all result sets
+     *
+     */
     public double getMAP(){
         double accum =0;
         for(ClassificationBaseMetrics m: results){

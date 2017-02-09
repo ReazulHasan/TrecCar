@@ -1,6 +1,6 @@
 package edu.unh.cs.ir.eval;
 
 /**
- * Created by matt on 2/7/17.
+ * Enum object used to indicate if an object is relevant or not relevant
  */
 public enum Relevancy {NOT_RELEVANT, RELEVANT};

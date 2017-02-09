@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 /**
- * Created by matt on 2/7/17.
+ * Unit tests for ClassificationBaseMetrics class.
  */
 class ClassificationBaseMetricsTest {
 
@@ -68,6 +68,12 @@ class ClassificationBaseMetricsTest {
         assertEquals(precision, eval.getPrecision(k),0.001);
     }
 
+    @Test
+    void getPrecisionAtK3(){
+        int k = 0;
+        assertThrows(IllegalArgumentException.class, () -> {eval.getPrecision(k);});
+
+    }
     @Test
     void getRecall(){
         double recall = 4.0/4;
