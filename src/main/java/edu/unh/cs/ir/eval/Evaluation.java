@@ -131,7 +131,9 @@ public class Evaluation {
         mpEvalData = new HashMap<>();
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
+                //System.out.println("line: "+line);
                 String ar[] = line.split("\\s+");
+                //System.out.println(" ar size: "+ar.length);
 //                System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
                 if(mpEvalData.containsKey(ar[0]))
                     mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
@@ -165,11 +167,17 @@ public class Evaluation {
 
     public static void main(String arg[]){
         //System.out.println("Hello Evaluation! "+arg[0]);
-        Evaluation eval = new Evaluation("spritzer.cbor.article.qrels", "results.spritzer.cbor.article.qrels.test");
+        //spritzer.cbor.article.qrels results\trec_run.spritzer.cbor.article.qrels.2.test
+        if(arg.length<2){
+            System.out.println("Please enter the ground truth & evaluation file names as command line arguments");
+            System.exit(0);
+        }
+        System.out.println(arg[0]+" "+arg[1]);
+        Evaluation eval = new Evaluation(arg[0], arg[1]);
         //eval.readData(arg[0], GROUND_TRUTH);
         HashMap<String, ArrayList<EvalData>> mpGt = eval.getGroundTruth();
         HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
-        ArrayList<EvalData> al = mpEd.get("Green%20sea%20turtle");
+        ArrayList<EvalData> al = eval.getEvalData("Green%20sea%20turtle");//mpEd.get("Green%20sea%20turtle");
         for(EvalData ed : al){
             System.out.println("id: "+ed.getId());
         }
