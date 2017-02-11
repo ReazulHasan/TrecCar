@@ -134,6 +134,14 @@ public class Evaluation {
         }
     }
 
+    public int getCountRelevantGroundTruth(String query){
+        return mpGroundTruth.get(query).size();
+    }
+
+    public int getCountRelevantEvalData(String query){
+        return mpEvalData.get(query).size();
+    }
+
     public static void main(String arg[]){
         //System.out.println("Hello Evaluation! "+arg[0]);
         Evaluation eval = new Evaluation("spritzer.cbor.article.qrels", "results.spritzer.cbor.article.qrels.test");
