@@ -30,6 +30,7 @@ public class EvaluationDriver {
         System.out.println(String.format("Recall: %s",performance.getRecall()));
         System.out.println(String.format("Balanced F1: %s",performance.getBalancedF1Score()));
         System.out.println(String.format("Average Precision: %s",performance.getAveragePrecision()));
+        System.out.println(String.format("Mean Average Precision: %s",performance.getMeanAveragePrecision()));
     }
 
     public static void main(String [] args){

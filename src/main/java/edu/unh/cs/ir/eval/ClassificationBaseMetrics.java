@@ -142,6 +142,19 @@ public class ClassificationBaseMetrics {
         return accum/getRelevantResultsCount();
     }
 
+    public double getMeanAveragePrecision(){
+        double MAP = 0.0;
+        int relevantCount = 0;
+        ArrayList<Relevancy> alRelevancy = getResults();
+        for(int i=0;i<alRelevancy.size();i++){
+            if(alRelevancy.get(i)==Relevancy.RELEVANT){
+                relevantCount++;
+                MAP += relevantCount/(i+1);
+            }
+        }
+        return relevantCount>0 ? MAP/relevantCount : MAP;
+    }
+
     //helper method for relevant results in result set
     private int getRelevantResultsCount(){
         int accum=0;

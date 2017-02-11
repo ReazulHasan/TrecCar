@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="07149d5c-c190-4c8b-876f-70ccb294a37b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java" afterPath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java" afterPath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvaluationDriver.java" afterPath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvaluationDriver.java" />
     </list>
     <ignored path="TrecCar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,18 +27,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Evaluation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Evaluation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="179" column="74" selection-start-line="179" selection-start-column="74" selection-end-line="179" selection-end-column="74" />
+            <state relative-caret-position="-113">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1897#1898#0" expanded="true" />
                 <element signature="e#1930#1931#0" expanded="true" />
                 <element signature="e#2134#2135#0" expanded="true" />
                 <element signature="e#2176#2177#0" expanded="true" />
-                <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
                 <element signature="e#5037#5038#0" expanded="true" />
                 <element signature="e#5091#5092#0" expanded="true" />
                 <element signature="e#5299#5300#0" expanded="true" />
@@ -51,51 +51,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spritzer.cbor.article.qrels" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spritzer.cbor.article.qrels">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="results.spritzer.cbor.article.qrels.2.test" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/results.spritzer.cbor.article.qrels.2.test">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="19" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="URLClassLoader.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/net/URLClassLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4522">
-              <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrecCar.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TrecCar.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassificationBaseMetrics.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ClassificationBaseMetrics.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1717">
-              <caret line="168" column="37" selection-start-line="168" selection-start-column="37" selection-end-line="168" selection-end-column="37" />
+            <state relative-caret-position="210">
+              <caret line="153" column="9" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Relevancy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Relevancy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EvaluationDriver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvaluationDriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="32" column="91" selection-start-line="32" selection-start-column="91" selection-end-line="32" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -127,15 +107,17 @@
         <option value="$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/EvaluationMeasuresTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationAggregatedMetrics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Relevancy.java" />
         <option value="$PROJECT_DIR$/TrecCar.iml" />
         <option value="$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/AppTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/ClassificationAggregatedMetricsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/ClassificationBaseMetricsTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvalData.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java" />
+        <option value="$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/EvaluationTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvaluationDriver.java" />
       </list>
     </option>
   </component>
@@ -298,7 +280,7 @@
       <recent name="G:\UNH-Courses\Spring-17\Info_retrieval\Project\TrecCarProject-02.07.17\TrecCar\src\main\java\edu\unh\cs\ir\eval" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Evaluation">
+  <component name="RunManager" selected="Application.EvaluationDriver">
     <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -330,6 +312,52 @@
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="spritzer.cbor.article.qrels results\results.spritzer.cbor.article.qrels.2.test" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="TrecCar" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="EvaluationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.unh.cs.ir.eval.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="TrecCar" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.unh.cs.ir.eval" />
+      <option name="MAIN_CLASS_NAME" value="edu.unh.cs.ir.eval.EvaluationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EvaluationDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.unh.cs.ir.eval.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="edu.unh.cs.ir.eval.EvaluationDriver" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -754,14 +782,18 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.App" />
       <item index="1" class="java.lang.String" itemvalue="Application.Evaluation" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.EvaluationTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.EvaluationDriver" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Evaluation" />
-        <item index="1" class="java.lang.String" itemvalue="Application.App" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.EvaluationDriver" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EvaluationTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Evaluation" />
+        <item index="3" class="java.lang.String" itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -781,7 +813,7 @@
       <workItem from="1486376324189" duration="2059000" />
       <workItem from="1486468542563" duration="1043000" />
       <workItem from="1486506463766" duration="6387000" />
-      <workItem from="1486778924583" duration="4223000" />
+      <workItem from="1486778924583" duration="8847000" />
     </task>
     <task id="LOCAL-00001" summary="Added new Eval and Groundtruth files">
       <created>1486376677046</created>
@@ -793,8 +825,25 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="EvaluationTest - 2017.02.10 at 22h 32m 51s.xml">
+      <configuration name="EvaluationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EvaluationTest - 2017.02.10 at 22h 33m 37s.xml">
+      <configuration name="EvaluationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EvaluationTest - 2017.02.10 at 22h 36m 24s.xml">
+      <configuration name="EvaluationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EvaluationTest - 2017.02.10 at 22h 43m 27s.xml">
+      <configuration name="EvaluationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EvaluationTest - 2017.02.10 at 22h 45m 42s.xml">
+      <configuration name="EvaluationTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28401000" />
+    <option name="totallyTimeSpent" value="33025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1420" y="-8" width="1320" height="784" extended-state="6" />
@@ -870,7 +919,6 @@
             <element signature="e#1930#1931#0" expanded="true" />
             <element signature="e#2134#2135#0" expanded="true" />
             <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
             <element signature="e#5037#5038#0" expanded="true" />
             <element signature="e#5091#5092#0" expanded="true" />
             <element signature="e#5299#5300#0" expanded="true" />
@@ -976,7 +1024,6 @@
             <element signature="e#1930#1931#0" expanded="true" />
             <element signature="e#2134#2135#0" expanded="true" />
             <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
             <element signature="e#5037#5038#0" expanded="true" />
             <element signature="e#5091#5092#0" expanded="true" />
             <element signature="e#5299#5300#0" expanded="true" />
@@ -1026,7 +1073,6 @@
             <element signature="e#1930#1931#0" expanded="true" />
             <element signature="e#2134#2135#0" expanded="true" />
             <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
             <element signature="e#5037#5038#0" expanded="true" />
             <element signature="e#5091#5092#0" expanded="true" />
             <element signature="e#5299#5300#0" expanded="true" />
@@ -1077,7 +1123,6 @@
             <element signature="e#1930#1931#0" expanded="true" />
             <element signature="e#2134#2135#0" expanded="true" />
             <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
             <element signature="e#5037#5038#0" expanded="true" />
             <element signature="e#5091#5092#0" expanded="true" />
             <element signature="e#5299#5300#0" expanded="true" />
@@ -1125,26 +1170,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Relevancy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="168" column="37" selection-start-line="168" selection-start-column="37" selection-end-line="168" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1163,22 +1192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="651" column="8" selection-start-line="651" selection-start-column="8" selection-end-line="651" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TrecCar.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1211,22 +1224,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results.spritzer.cbor.article.qrels.test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/net/URLClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4522">
-          <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/results.spritzer.cbor.article.qrels.2.test">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1235,25 +1232,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spritzer.cbor.article.qrels">
+    <entry file="file://$PROJECT_DIR$/TrecCar.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding>
+            <element signature="e#1084#1090#0" expanded="true" />
+            <element signature="e#1095#1101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/edu/unh/cs/ir/eval/EvaluationTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
+          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.spritzer.cbor.article.qrels.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="85" selection-start-line="9" selection-start-column="85" selection-end-line="9" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/results.spritzer.cbor.article.entity.qrels.1.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spritzer.cbor.article.qrels">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="179" column="74" selection-start-line="179" selection-start-column="74" selection-end-line="179" selection-end-column="74" />
+        <state relative-caret-position="-113">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1897#1898#0" expanded="true" />
             <element signature="e#1930#1931#0" expanded="true" />
             <element signature="e#2134#2135#0" expanded="true" />
             <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#getRelevancyResults#0;class#Evaluation#0" expanded="false" />
             <element signature="e#5037#5038#0" expanded="true" />
             <element signature="e#5091#5092#0" expanded="true" />
             <element signature="e#5299#5300#0" expanded="true" />
@@ -1263,6 +1310,30 @@
             <marker date="1486783159974" expanded="false" signature="1666:1676" ph=" { " />
             <marker date="1486783159974" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Relevancy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/EvaluationDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="32" column="91" selection-start-line="32" selection-start-column="91" selection-end-line="32" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/ClassificationBaseMetrics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="153" column="9" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
