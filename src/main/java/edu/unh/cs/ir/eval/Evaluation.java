@@ -14,10 +14,10 @@ public class Evaluation {
     private static final String DEFAULT_GROUND_TRUTH = "spritzer.cbor.toplevel.qrels";
     HashMap<String, ArrayList<EvalData>> mpGroundTruth, mpEvalData;
 
-    /*
-    * Create instance of evaluation by passing the file name of the data file, default ground truth
-    * will be parsed.
-    * */
+    /**
+     * Create instance of evaluation by passing the file name of the data file, default ground truth will be parsed.
+     * @param strEvalData
+     */
     public Evaluation(String strEvalData){
         mpGroundTruth = new HashMap<>();
         mpEvalData = new HashMap<>();
@@ -25,9 +25,11 @@ public class Evaluation {
         readEvalData(strEvalData);
     }
 
-    /*
-    * Create instance of evaluation by passing the file name of the data file and ground truth file.
-    * */
+    /**
+     * Constructor to create an object of Evaluation class with the two input file names to be evaluated
+     * @param strGroundTruth
+     * @param strEvalData
+     */
     public Evaluation(String strGroundTruth, String strEvalData){
         mpGroundTruth = new HashMap<>();
         mpEvalData = new HashMap<>();
@@ -35,44 +37,45 @@ public class Evaluation {
         readEvalData(strEvalData);
     }
 
-    /*
-    * get the hashmap containing the parsed ground truth
-    * */
+    /**
+     * get the hashmap containing the parsed ground truth
+     * @return a hashmap of parsed data
+     */
     public HashMap<String, ArrayList<EvalData>> getGroundTruth(){
         return mpGroundTruth;
     }
 
-    /*
-    * get the list of the values for the key
-    * */
+    /**
+     * get the list of the values for the key
+     * @param key
+     * @return an array list containing the parsed ground truth data
+     */
     public ArrayList<EvalData> getGroundTruth(String key){
         return mpGroundTruth.get(key);
     }
 
-    /*
-    * get the hashmap containing the parsed data to be evaluated
-    * */
+    /**
+     * get the hashmap containing the parsed data to be evaluated
+     * @return a hashmap of parsed data
+     */
     public HashMap<String, ArrayList<EvalData>> getEvalData(){
         return mpEvalData;
     }
 
-    /*
-    * get the list of the values for the key
-    * */
+    /**
+     * get the list of the values for the key
+     * @param key
+     * @return an array list containing the parsed evaluation data
+     */
     public ArrayList<EvalData> getEvalData(String key){
         return mpEvalData.get(key);
     }
 
-    /*
-    * Use this method if the Evaluation object is already available that contains the hashmap with ground truth.
-    * only need to pass a new dataset tobe tested. pass the new data set here in this method, it will be parsed here
-    * and the parsed hashmap will be available using the getter methods.
-    * */
-    /*public void readEvalData(String strEvalData){
-        mpEvalData = new HashMap<>();
-        readData(strEvalData,EVAL_DATA);
-    }*/
-
+    /**
+     * get the relevancy result for a topic identifier
+     * @param topicIdentifier
+     * @return An int array
+     */
     public int[] getRelevancyResults(String topicIdentifier){
 
         ArrayList<Integer> results = new ArrayList<>();
@@ -99,6 +102,10 @@ public class Evaluation {
         return intResults;
     }
 
+    /**
+     * read ground truth data
+     * @param file
+     */
     private void readGroundTruth(String file){
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
@@ -116,6 +123,10 @@ public class Evaluation {
         }
     }
 
+    /**
+     * read evaluation data
+     * @param file
+     */
     private void readEvalData(String file){
         mpEvalData = new HashMap<>();
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -134,10 +145,20 @@ public class Evaluation {
         }
     }
 
+    /**
+     * get the total count of matched documents for the given query in ground truth
+     * @param query
+     * @return relevantCount
+     */
     public int getCountRelevantGroundTruth(String query){
         return mpGroundTruth.get(query).size();
     }
 
+    /**
+     * get the total count of matched documents for the given query in evaluation data
+     * @param query
+     * @return relevantCount
+     */
     public int getCountRelevantEvalData(String query){
         return mpEvalData.get(query).size();
     }

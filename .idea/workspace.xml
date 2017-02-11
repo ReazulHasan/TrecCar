@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07149d5c-c190-4c8b-876f-70ccb294a37b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java" afterPath="$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java" />
     </list>
     <ignored path="TrecCar.iws" />
@@ -29,17 +28,22 @@
       <file leaf-file-name="Evaluation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="142" column="5" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+            <state relative-caret-position="85">
+              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2548#2549#0" expanded="false" />
-                <element signature="e#1798#1799#0" expanded="true" />
-                <element signature="e#1840#1841#0" expanded="true" />
-                <element signature="e#4639#4640#0" expanded="true" />
-                <element signature="e#4693#4694#0" expanded="true" />
-                <element signature="e#4749#4750#0" expanded="true" />
-                <element signature="e#4800#4801#0" expanded="true" />
+                <element signature="e#1897#1898#0" expanded="true" />
+                <element signature="e#1930#1931#0" expanded="true" />
+                <element signature="e#2134#2135#0" expanded="true" />
+                <element signature="e#2176#2177#0" expanded="true" />
+                <element signature="e#4922#4923#0" expanded="true" />
+                <element signature="e#4976#4977#0" expanded="true" />
+                <element signature="e#5184#5185#0" expanded="true" />
+                <element signature="e#5235#5236#0" expanded="true" />
+                <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+                <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+                <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+                <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -48,7 +52,7 @@
       <file leaf-file-name="URLClassLoader.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/net/URLClassLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4267">
+            <state relative-caret-position="4522">
               <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
               <folding />
             </state>
@@ -763,7 +767,7 @@
       <workItem from="1486376324189" duration="2059000" />
       <workItem from="1486468542563" duration="1043000" />
       <workItem from="1486506463766" duration="6387000" />
-      <workItem from="1486778924583" duration="947000" />
+      <workItem from="1486778924583" duration="1776000" />
     </task>
     <task id="LOCAL-00001" summary="Added new Eval and Groundtruth files">
       <created>1486376677046</created>
@@ -776,7 +780,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25125000" />
+    <option name="totallyTimeSpent" value="25954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1420" y="-8" width="1320" height="784" extended-state="6" />
@@ -848,13 +852,18 @@
           <caret line="61" column="42" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="false" />
-            <element signature="e#1798#1799#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#4639#4640#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4749#4750#0" expanded="true" />
-            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5184#5185#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+            <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -948,13 +957,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="false" />
-            <element signature="e#1798#1799#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#4639#4640#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4749#4750#0" expanded="true" />
-            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5184#5185#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+            <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -992,13 +1006,18 @@
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="false" />
-            <element signature="e#1798#1799#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#4639#4640#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4749#4750#0" expanded="true" />
-            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5184#5185#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+            <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1037,13 +1056,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="false" />
-            <element signature="e#1798#1799#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#4639#4640#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4749#4750#0" expanded="true" />
-            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5184#5185#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+            <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1185,7 +1209,7 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/net/URLClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4267">
+        <state relative-caret-position="4522">
           <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
           <folding />
         </state>
@@ -1193,17 +1217,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/unh/cs/ir/eval/Evaluation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="142" column="5" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+        <state relative-caret-position="85">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="false" />
-            <element signature="e#1798#1799#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#4639#4640#0" expanded="true" />
-            <element signature="e#4693#4694#0" expanded="true" />
-            <element signature="e#4749#4750#0" expanded="true" />
-            <element signature="e#4800#4801#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+            <element signature="e#4976#4977#0" expanded="true" />
+            <element signature="e#5184#5185#0" expanded="true" />
+            <element signature="e#5235#5236#0" expanded="true" />
+            <marker date="1486780709264" expanded="false" signature="1421:1431" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1452:1458" ph=" }" />
+            <marker date="1486780709264" expanded="false" signature="1666:1676" ph=" { " />
+            <marker date="1486780709264" expanded="false" signature="1706:1712" ph=" }" />
           </folding>
         </state>
       </provider>
