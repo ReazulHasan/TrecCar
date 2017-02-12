@@ -17,24 +17,25 @@ The result will be shown on the terminal as a table of different evaluation meas
 -----------------------------------------------------------------
 Official TREC Metrics: Across All Queries
 -----------------------------------------------------------------
-Description                       Trec Measure     Value
------------                       ------------     -----
-Number of queries                 num_q            1
-Number of retrieved documents     num_ret          14
-Relevant documents in corpus      num_rel          53
-Relevant documents retrieved      num_rel_ret      7
-Mean Average Precision            map              0.1321
-R-Precision                       Rprec            0.1321
-Mean Reciprocal Rank (MRR):       recip_rank       1.0000
-Precision@5                       P_5              1.0000
-Precision@10                      P_10             0.7000
-Precision@15                      P_15             0.4667
-Precision@20                      P_20             0.3500
-Precision@30                      P_30             0.2333
-Precision@100                     P_100            0.0700
-Precision@200                     P_200            0.0350
-Precision@500                     P_500            0.0140
-Precision@1000                    P_1000           0.0070
+
+|Description                       |Trec Measure     |Value |
+|-----------                       |------------     |----- |
+|Number of queries                 |num_q            |1     |
+|Number of retrieved documents     |num_ret          |14    |
+|Relevant documents in corpus      |num_rel          |53    |
+|Relevant documents retrieved      |num_rel_ret      |7     |
+|Mean Average Precision            |map              |0.1321|
+|R-Precision                       |Rprec            |0.1321|
+|Mean Reciprocal Rank (MRR):       |recip_rank       |1.0000|
+|Precision@5                       |P_5              |1.0000|
+|Precision@10                      |P_10             |0.7000|
+|Precision@15                      |P_15             |0.4667|
+|Precision@20                      |P_20             |0.3500|
+|Precision@30                      |P_30             |0.2333|
+|Precision@100                     |P_100            |0.0700|
+|Precision@200                     |P_200            |0.0350|
+|Precision@500                     |P_500            |0.0140|
+|Precision@1000                    |P_1000           |0.0070|
 
 Additional:
 -----------------------------------------------------------------
