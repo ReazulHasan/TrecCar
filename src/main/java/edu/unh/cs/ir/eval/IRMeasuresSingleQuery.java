@@ -137,12 +137,15 @@ public class IRMeasuresSingleQuery {
      *  Returns recall
      */
     public double getRecall(){
-        return (double) getRelevantResultsRetrievedCount()/getTotalRelevantCount();
+
+
+        return (double) getRelevantResultsRetrievedCount()/(getTotalRelevantCount()>0?getTotalRelevantCount():1);
     }
 
 
     /**
-     *  Returns balanced f score for the result set
+     *  Returns balanced f score for the result set.  When both precision and recall are 0, the function returns
+     *  NaN, because this is un-defined edge case.
      */
     public double getBalancedF1Score(){
         double precision = getPrecision();
@@ -171,10 +174,24 @@ public class IRMeasuresSingleQuery {
                 accum += getPrecision(i + 1);
             }
         }
-
-        return accum/getTotalRelevantCount();
+        int denom = getTotalRelevantCount()>0? getTotalRelevantCount():1;
+        return accum/denom;
     }
 
+    /**
+     *
+     * Returns the reciprocal rank of a query
+     */
+    public double getReciprocalRank(){
+
+
+        for(int i=0;i< getResultsSize();i++){
+            if(results.get(i)==Relevancy.RELEVANT) {
+                return 1.0/(i+1);
+            }
+        }
+        return 0;
+    }
     //helper method for relevant results in result set
     public int getRelevantResultsRetrievedCount(){
         int accum=0;

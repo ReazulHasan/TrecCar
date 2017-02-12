@@ -133,6 +133,62 @@ class IRMeasuresSingleQueryTest {
         assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
     }
 
+    //average precision with only 1 result - non-valid
+    @Test
+    void getAveragePrecision10(){
+        int[] results = {0};
+        double avgPrecision = 0;
+
+        eval = new IRMeasuresSingleQuery(results);
+        assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
+    }
+
+    //average precision with only 1 result - valid
+    @Test
+    void getAveragePrecision11(){
+        int[] results = {1};
+        double avgPrecision = 0.0189;
+
+        eval = new IRMeasuresSingleQuery(results,53);
+        assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
+    }
+
+    @Test
+    void getReciprocalRank(){
+        int[] results = {1,0,0};
+        double rank = 1;
+
+        eval = new IRMeasuresSingleQuery(results);
+        assertEquals(rank, eval.getReciprocalRank(), 0.01);
+    }
+
+    @Test
+    void getReciprocalRank2(){
+        int[] results = {0,1,0};
+        double rank = 0.5;
+
+        eval = new IRMeasuresSingleQuery(results);
+        assertEquals(rank, eval.getReciprocalRank(), 0.01);
+    }
+
+    @Test
+    void getReciprocalRank3(){
+        int[] results = {0,0,1};
+        double rank = 0.333;
+
+        eval = new IRMeasuresSingleQuery(results);
+        assertEquals(rank, eval.getReciprocalRank(), 0.01);
+    }
+
+    @Test
+    void getReciprocalRank4(){
+        int[] results = {0,0,0};
+        double rank = 0;
+
+        eval = new IRMeasuresSingleQuery(results);
+        assertEquals(rank, eval.getReciprocalRank(), 0.01);
+    }
+
     @BeforeEach
     void setUp() {
         baseResults = new int[]{0,1,1,0,0,0,1,1,0,0};

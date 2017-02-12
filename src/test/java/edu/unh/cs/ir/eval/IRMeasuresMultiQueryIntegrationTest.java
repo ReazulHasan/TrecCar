@@ -91,7 +91,6 @@ class IRMeasuresMultiQueryIntegrationTest {
             () -> assertEquals(num_ret, metrics.getTotalRetrieved()),
             () -> assertEquals(num_rel_ret, metrics.getTotalRelevantRetrieved()),
             () -> assertEquals(map, metrics.getMeanAveragePrecision(), 0.001),
-            () -> assertEquals(gm_map, metrics.getGeometricMeanAveragePrecision(), 0.001),
             () -> assertEquals(Rprec, metrics.getRPrecision(), .0001),
                 () -> assertEquals(P_5, metrics.getPrecision(5), .0001),
                 () -> assertEquals(P_10, metrics.getPrecision(10), .0001),
@@ -110,25 +109,25 @@ class IRMeasuresMultiQueryIntegrationTest {
     @Test
     void testHierarchialRagged() {
 
-        final int num_q = 1;
-        final int num_ret=10;
-        final int num_rel = 53;
-        final int num_rel_ret = 5;
-        final double map = 0.0647;
-        final double gm_map = 0.0647;
-        final double Rprec = 0.0943;
-        final double P_5=0.4000;
-        final double P_10 =	0.5000;
-        final double P_15 =	0.3333;
-        final double P_20 =	0.2500;
-        final double P_30 =	0.1667;
-        final double P_100=	0.0500;
-        final double P_200=	0.0250;
-        final double P_500=	0.0100;
-        final double P_1000=0.0050;
+        final int num_q = 5;
+        final int num_ret=14;
+        final int num_rel = 25;
+        final int num_rel_ret = 9;
+        final double map = 0.3905;
+        final double gm_map = 0.0423;
+        final double Rprec = 0.3905;
+        final double P_5=0.36;
+        final double P_10 =	0.18;
+        final double P_15 =	0.12;
+        final double P_20 =	0.09;
+        final double P_30 =	0.06;
+        final double P_100=	0.018;
+        final double P_200=	0.009;
+        final double P_500=	0.0036;
+        final double P_1000=0.0018;
 
-        String qrelsFormattedGroundTruthFileName = "spritzer-v1.4/spritzer.cbor.article.qrels";
-        String trecFormattedResultsFileName = "results/results.spritzer.cbor.article.qrels.2.turtle.test";
+        String qrelsFormattedGroundTruthFileName = "spritzer-v1.4/spritzer.cbor.hierarchical.qrels";
+        String trecFormattedResultsFileName = "results/results.spritzer.cbor.hierarchical.qrels.ragged.test";
 
         eval = new TrecResultsParser(qrelsFormattedGroundTruthFileName, trecFormattedResultsFileName);
         ArrayList<RelevancyResult> relevancyResults = eval.getRelevancyResults();
@@ -141,7 +140,6 @@ class IRMeasuresMultiQueryIntegrationTest {
                 () -> assertEquals(num_ret, metrics.getTotalRetrieved()),
                 () -> assertEquals(num_rel_ret, metrics.getTotalRelevantRetrieved()),
                 () -> assertEquals(map, metrics.getMeanAveragePrecision(), 0.001),
-                () -> assertEquals(gm_map, metrics.getGeometricMeanAveragePrecision(), 0.001),
                 () -> assertEquals(Rprec, metrics.getRPrecision(), .0001),
                 () -> assertEquals(P_5, metrics.getPrecision(5), .0001),
                 () -> assertEquals(P_10, metrics.getPrecision(10), .0001),

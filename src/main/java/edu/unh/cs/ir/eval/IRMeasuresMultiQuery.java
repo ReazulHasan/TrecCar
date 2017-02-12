@@ -160,20 +160,6 @@ public class IRMeasuresMultiQuery {
         return accum/ results.size();
     }
 
-    /**
-     * Returns the geometric mean average precision across all result sets.
-     * This is the same measure as getMeanAveragePrecision on an
-     * individual query.  The geometric mean rewards methods that are more consistent over queries
-     * as opposed to methods which do very well for some queries but poorly on other queries.
-     *
-     */
-    public double getGeometricMeanAveragePrecision(){
-        double accum =1;
-        for(IRMeasuresSingleQuery m: results){
-            accum *= m.getAveragePrecision();
-        }
-        return Math.pow(accum, 1.0/getQueryCount());
-    }
 
     public double getMeanAverageRecall(){
         double accum =0;
@@ -183,12 +169,29 @@ public class IRMeasuresMultiQuery {
         return (double) accum/getQueryCount();
     }
 
+    /**
+     * Returns the mean average F1 balance across all queries. If F1 Balanced is undefined
+     * excludes from the calculation.  This can occur if both recall and precision for an individual
+     * query are 0.
+     * @return Arithmetic mean F1 Balanced score averaged across all queries.
+     */
     public double getMeanAverageBalancedF1(){
         double accum =0;
         for(IRMeasuresSingleQuery m: results){
-            accum += m.getBalancedF1Score();
+
+            accum += Double.isNaN(m.getBalancedF1Score())?0:m.getBalancedF1Score();
         }
         return (double) accum/getQueryCount();
     }
 
+
+    public double getMeanReciprocalRank(){
+        double accum =0.0;
+        int count=0;
+        for(IRMeasuresSingleQuery m: results){
+            accum += m.getReciprocalRank();
+
+        }
+        return  accum/getQueryCount();
+    }
 }
