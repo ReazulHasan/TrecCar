@@ -22,8 +22,23 @@ public class ClassificationAggregatedMetrics {
      *
      * @param metrics Array list of query results
      */
-    public ClassificationAggregatedMetrics(ArrayList<ClassificationBaseMetrics> metrics){
-        this.results=metrics;
+    //Todo: Remove all tests using this constructor then delete
+//    public ClassificationAggregatedMetrics(ArrayList<ClassificationBaseMetrics> metrics){
+//        this.results=metrics;
+//    }
+
+    /**
+     * Creates a class using a passed in ArrayList of {@link RelevancyResult} objects
+     *
+     */
+    public ClassificationAggregatedMetrics(ArrayList<RelevancyResult> relevancyResults){
+        this.results = new ArrayList<>();
+
+        for(RelevancyResult relevancyResult: relevancyResults){
+            results.add(new ClassificationBaseMetrics(relevancyResult));
+        }
+
+
     }
 
     /**
@@ -38,8 +53,61 @@ public class ClassificationAggregatedMetrics {
      * Returns the query resultsets stored in the object
      *
      */
-    public ArrayList<ClassificationBaseMetrics> getBaseMetrics(){
-        return results;
+    public ClassificationBaseMetrics getBaseMetrics(String query){
+        for(ClassificationBaseMetrics m: results){
+            if (m.getQuery().contentEquals(query))
+                return m;
+        }
+        return null;
+    }
+
+
+    /**
+     * Returns a count of distinct queries in the result set
+     * @return count of total number of queries
+     */
+    public int getQueryCount(){
+        return results.size();
+    }
+
+    /**
+     * Returns the total number of relevant documents across all queries in
+     * the corpus
+     * @return count of relevant corpus documents
+     */
+    public int getTotalRelevantInCorpus(){
+
+        int accum =0;
+        for(ClassificationBaseMetrics metrics : results){
+            accum+=metrics.getTotalRelevantCount();
+        }
+        return accum;
+    }
+
+    /**
+     * Returns the total number of retrieved documents across all queries
+     * @return count of retrieved documents
+     */
+    public int getTotalRetrieved(){
+
+        int accum =0;
+        for(ClassificationBaseMetrics metrics : results){
+            accum+=metrics.getResultsSize();
+        }
+        return accum;
+    }
+    /**
+     * Returns the total number of relevant documents across all queries in
+     * the resultsset
+     * @return count of relevant corpus documents
+     */
+    public int getTotalRelevantRetrieved(){
+
+        int accum =0;
+        for(ClassificationBaseMetrics metrics : results){
+            accum+=metrics.getRelevantResultsRetrievedCount();
+        }
+        return accum;
     }
 
     /**
@@ -69,28 +137,58 @@ public class ClassificationAggregatedMetrics {
     }
 
     /**
-     * Get R precision at k averaged across all result sets
-     * @param k the cutoff in the result sets using {@link ClassificationBaseMetrics#getPrecision(int)}
-     *          Corner conditions are handled by that method.
+     * Get R precision averaged across all result sets
      *
      */
-    public double getRPrecision(int k){
+    public double getRPrecision(){
         double accum =0;
         for(ClassificationBaseMetrics m: results){
-            accum += m.getRPrecision(k);
+            accum += m.getRPrecision();
         }
         return accum/ results.size();
     }
 
     /**
-     * Returns the mean average precision across all result sets
+     * Returns the arithmetic mean average precision across all result sets
      *
      */
-    public double getMAP(){
+    public double getMeanAveragePrecision(){
         double accum =0;
         for(ClassificationBaseMetrics m: results){
             accum += m.getAveragePrecision();
         }
         return accum/ results.size();
     }
+
+    /**
+     * Returns the geometric mean average precision across all result sets.
+     * This is the same measure as getMeanAveragePrecision on an
+     * individual query.  The geometric mean rewards methods that are more consistent over queries
+     * as opposed to methods which do very well for some queries but poorly on other queries.
+     *
+     */
+    public double getGeometricMeanAveragePrecision(){
+        double accum =1;
+        for(ClassificationBaseMetrics m: results){
+            accum *= m.getAveragePrecision();
+        }
+        return Math.pow(accum, 1.0/getQueryCount());
+    }
+
+    public double getMeanAverageRecall(){
+        double accum =0;
+        for(ClassificationBaseMetrics m: results){
+            accum += m.getRecall();
+        }
+        return (double) accum/getQueryCount();
+    }
+
+    public double getMeanAverageBalancedF1(){
+        double accum =0;
+        for(ClassificationBaseMetrics m: results){
+            accum += m.getBalancedF1Score();
+        }
+        return (double) accum/getQueryCount();
+    }
+
 }

@@ -72,11 +72,31 @@ public class Evaluation {
     }
 
     /**
-     * get the relevancy result for a topic identifier
-     * @param topicIdentifier
-     * @return An int array
+     * Returns an arraylist of RelevancyResult objects for each query evaluated
+     * in the input results trec_eval formatted file.
+     *
+     * @return Arraylist of all query relevancy result
      */
-    public int[] getRelevancyResults(String topicIdentifier){
+    public ArrayList<RelevancyResult> getRelevancyResults(){
+
+        ArrayList<RelevancyResult> relevancyResults = new ArrayList<>();
+        ArrayList<String> groundTruthResults= new ArrayList<>();
+
+        for(String key: mpEvalData.keySet()) {
+                int[] results = getResults(key);
+                int totalRelevantDocuments = getCountRelevantGroundTruth(key);
+
+                RelevancyResult relevancyResult = new RelevancyResult(key, results, totalRelevantDocuments);
+                relevancyResults.add(relevancyResult);
+
+        }
+
+        return relevancyResults;
+    }
+
+
+
+    public int[] getResults(String topicIdentifier){
 
         ArrayList<Integer> results = new ArrayList<>();
         ArrayList<String> groundTruthResults= new ArrayList<>();
@@ -165,22 +185,23 @@ public class Evaluation {
         return mpEvalData.get(query).size();
     }
 
-    public static void main(String arg[]){
-        //System.out.println("Hello Evaluation! "+arg[0]);
-        //spritzer.cbor.article.qrels results\trec_run.spritzer.cbor.article.qrels.2.test
-        if(arg.length<2){
-            System.out.println("Please enter the ground truth & evaluation file names as command line arguments");
-            System.exit(0);
-        }
-        System.out.println(arg[0]+" "+arg[1]);
-        Evaluation eval = new Evaluation(arg[0], arg[1]);
-        //eval.readData(arg[0], GROUND_TRUTH);
-        HashMap<String, ArrayList<EvalData>> mpGt = eval.getGroundTruth();
-        HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
-        ArrayList<EvalData> al = eval.getEvalData("Green%20sea%20turtle");//mpEd.get("Green%20sea%20turtle");
-        for(EvalData ed : al){
-            System.out.println("id: "+ed.getId());
-        }
-        System.out.println("mpGt.size: "+mpGt.size()+", mpEd.size: "+mpEd.size());
-    }
+//    public static void main(String arg[]){
+//        //System.out.println("Hello Evaluation! "+arg[0]);
+//        //spritzer.cbor.article.qrels results\trec_run.spritzer.cbor.article.qrels.2.test
+//        if(arg.length<2){
+//            System.out.println("Please enter the ground truth & evaluation file names as command line arguments");
+//            System.exit(0);
+//        }
+//        System.out.println(arg[0]+" "+arg[1]);
+//        Evaluation eval = new Evaluation(arg[0], arg[1]);
+//        //eval.readData(arg[0], GROUND_TRUTH);
+//        HashMap<String, ArrayList<EvalData>> mpGt = eval.getGroundTruth();
+//        HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
+//        ArrayList<EvalData> al = eval.getEvalData("Green%20sea%20turtle");//mpEd.get("Green%20sea%20turtle");
+//        for(EvalData ed : al){
+//            System.out.println("id: "+ed.getId());
+//        }
+//        System.out.println("mpGt.size: "+mpGt.size()+", mpEd.size: "+mpEd.size());
+//        System.out.println(eval.getRelevancyResults());
+//    }
 }

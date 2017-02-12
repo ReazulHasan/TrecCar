@@ -8,21 +8,13 @@ public class RelevancyResult {
 
 
     private String query;
-    private int[] relevancyResults;
+    private int[] results;
     private int totalRelevantDocuments;
 
 
-
-
-    public RelevancyResult(String query, int[] relevancyResults) {
+    public RelevancyResult(String query, int[] results, int totalRelevantDocuments) {
         this.query = query;
-
-        this.relevancyResults = relevancyResults;
-    }
-
-    public RelevancyResult(String query, int[] relevancyResults, int totalRelevantDocuments) {
-        this.query = query;
-        this.relevancyResults = relevancyResults;
+        this.results = results;
         this.totalRelevantDocuments=totalRelevantDocuments;
     }
 
@@ -30,8 +22,8 @@ public class RelevancyResult {
         return query;
     }
 
-    public int[] getRelevancyResults() {
-        return relevancyResults;
+    public int[] getResults() {
+        return results;
     }
 
     public int getTotalRelevantDocuments() {

@@ -74,6 +74,14 @@ class ClassificationBaseMetricsTest {
         assertThrows(IllegalArgumentException.class, () -> {eval.getPrecision(k);});
 
     }
+
+    @Test
+    void getPrecisionAtK4(){
+        int k = 11;
+        double precision = 4.0/11;
+        assertEquals(precision, eval.getPrecision(11),0.001);
+
+    }
     @Test
     void getRecall(){
         double recall = 4.0/4;
@@ -99,12 +107,13 @@ class ClassificationBaseMetricsTest {
 
     @Test
     void getRPrecision(){
-        int k =5;
+
         double rPrecision = 2.0/4.0;
 
-        assertEquals(rPrecision, eval.getRPrecision(k),0.001);
+        assertEquals(rPrecision, eval.getRPrecision(),0.001);
     }
 
+    //TODO: Get Average Precision (and other measures) for corner case of 0 and 1
     //Worked average precision problems from https://www.youtube.com/watch?v=pM6DJ0ZZee0
     @Test
     void getAveragePrecision(){

@@ -76,16 +76,25 @@ class ClassificationAggregatedMetricsTest {
         evalList.add(eval2);
         evalList.add(eval3);
 
-         evals= new ClassificationAggregatedMetrics(evalList);
+        RelevancyResult r1 = new RelevancyResult("q1",results1,4);
+        RelevancyResult r2 = new RelevancyResult("q2",results2,5);
+        RelevancyResult r3 = new RelevancyResult("q3",results3,6);
+
+        ArrayList<RelevancyResult> relevancyResults = new ArrayList<>();
+        relevancyResults.add(r1);
+        relevancyResults.add(r2);
+        relevancyResults.add(r3);
+
+         evals= new ClassificationAggregatedMetrics(relevancyResults);
     }
 
     @Test
     void testBaseMetrics() {
-        ArrayList<ClassificationBaseMetrics> evalList = evals.getBaseMetrics();
 
-        assertEquals(resultsRelevancy1,evalList.get(0).getResults());
-        assertEquals(resultsRelevancy2,evalList.get(1).getResults());
-        assertEquals(resultsRelevancy3,evalList.get(2).getResults());
+        ClassificationBaseMetrics c1 = evals.getBaseMetrics("q1");
+        assertArrayEquals(results1,c1.getIntResults());
+        assertArrayEquals(results2,evals.getBaseMetrics("q2").getIntResults());
+        assertArrayEquals(results3,evals.getBaseMetrics("q3").getIntResults());
     }
 
     @Test
@@ -111,30 +120,31 @@ class ClassificationAggregatedMetricsTest {
         assertEquals(precision,evals.getPrecision(k));
     }
 
+
+
     @Test
     void getRPrecision(){
-        int k=5;
 
         double p1 = 2.0/4.0;
         double p2 = 4.0/5.0;
-        double p3 = 3.0/6.0;
+        double p3 = 4.0/6.0;
 
         double rPrecision = (p1+p2+p3)/3;
 
-        assertEquals(rPrecision,evals.getRPrecision(k));
+        assertEquals(rPrecision,evals.getRPrecision());
     }
 
     @Test
     void getRPrecision2(){
-        int k=6;
+
 
         int relevant1=20;
         int relevant2=30;
         int relevant3=100;
 
-        double p1 = 2.0/relevant1;
-        double p2 = 4.0/relevant2;
-        double p3 = 4.0/relevant3;
+        double p1 = 4.0/relevant1;
+        double p2 = 5.0/relevant2;
+        double p3 = 6.0/relevant3;
 
         double rPrecision = (p1+p2+p3)/3;
 
@@ -147,8 +157,10 @@ class ClassificationAggregatedMetricsTest {
         evals.addMetrics(eval2);
         evals.addMetrics(eval3);
 
-        assertEquals(rPrecision,evals.getRPrecision(k));
+        assertEquals(rPrecision,evals.getRPrecision());
     }
+
+
 
     //Worked example from https://www.youtube.com/watch?v=pM6DJ0ZZee0
     @Test
@@ -165,7 +177,7 @@ class ClassificationAggregatedMetricsTest {
         evals.addMetrics(eval1);
         evals.addMetrics(eval2);
 
-        assertEquals(map,evals.getMAP(),0.01);
+        assertEquals(map,evals.getMeanAveragePrecision(),0.01);
     }
 
 }
