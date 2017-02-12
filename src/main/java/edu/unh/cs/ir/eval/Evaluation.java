@@ -1,10 +1,34 @@
 package edu.unh.cs.ir.eval;
 
 /**
+ * This is the entry point for the evaluation framework. To use the evaluation framework, create an instance of
+ * Evaluation class by passing the ground truth & evaluation file names and then invoke the evaluate method.
  * Created by matt on 2/8/17.
  */
 public class Evaluation {
 
+    /**
+     * Constructor for creating object of the Evaluation class
+     * @param strGroundTruth
+     * @param strEvaluationData
+     */
+    public Evaluation(String strGroundTruth, String strEvaluationData){
+        try {
+            TrecResultsParser eval = new TrecResultsParser(strGroundTruth,strEvaluationData);
+            IRMeasuresMultiQuery metrics = new IRMeasuresMultiQuery(eval.getRelevancyResults());
+            outputResults(strGroundTruth, strEvaluationData,metrics);
+        }catch (Exception e){
+            System.out.println(String.format("Program execution error %s",e));
+            System.out.println("Make sure your file arguments are <qrels file> <trec formatted results file>");
+        }
+    }
+
+    /**
+     * Method responsible for invoking different evaluation measures print the results
+     * @param groundTruth
+     * @param trecFormat
+     * @param metrics
+     */
     static public void outputResults(String groundTruth, String trecFormat, IRMeasuresMultiQuery metrics){
         System.out.println("-----------------------------------------------------------------");
         System.out.print("Results for:\n");
@@ -36,30 +60,15 @@ public class Evaluation {
         System.out.println("Additional:");
         System.out.println("-----------------------------------------------------------------");
         System.out.println(String.format("Balanced F1:                                       %.4f",metrics.getMeanAverageBalancedF1()));
-
-
-
-
     }
 
     public static void main(String [] args){
-
-
         if(args.length<2){
             System.out.println("Please enter the ground truth & evaluation file names as command line arguments");
             System.exit(0);
         }
-
-
-//        String qrelsFormattedGroundTruthFileName="spritzer-v1.4/spritzer.cbor.hierarchical.qrels";
         String qrelsFormattedGroundTruthFileName=args[0];
-////
         String trecFormattedResultsFileName=args[1];
-//       String trecFormattedResultsFileName="results/results.spritzer.cbor.hierarchical.qrels.ragged.test";
-
-
-
-
 
         try {
             TrecResultsParser eval = new TrecResultsParser(qrelsFormattedGroundTruthFileName,trecFormattedResultsFileName);
@@ -68,13 +77,6 @@ public class Evaluation {
         }catch (Exception e){
             System.out.println(String.format("Program execution error %s",e));
             System.out.println("Make sure your file arguments are <qrels file> <trec formatted results file>");
-
         }
-
-
-
-
-
-
     }
 }
