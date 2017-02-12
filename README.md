@@ -15,7 +15,6 @@ A sample runcould be: java -jar TrecCarEvaluation-1.0-SNAPSHOT-jar-with-dependen
 The result will be shown on the terminal as a table of different evaluation measures:
 
 -----------------------------------------------------------------
-
 Official TREC Metrics: Across All Queries
 -----------------------------------------------------------------
 Description                       Trec Measure     Value
