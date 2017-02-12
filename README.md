@@ -10,7 +10,7 @@ Steps to compile, intall & run the framework on Linux enviroment:
 4. Go inside the target directory: cd target
 5. Run the program with two parameters containing the file name with relative paths for ground truth & result files: java -jar
 TrecCarEvaluation-1.0-SNAPSHOT-jar-with-dependencies.jar <ground-truth-qrelfile> <results-qrelfile>
-A sample runcould be: java -jar TrecCarEvaluation-1.0-SNAPSHOT-jar-with-dependencies.jar ../spritzer-v1.4/spritzer.cbor.article.qrels ../results/results.spritzer.cbor.article.qrels.1.test
+A sample runcould be: java -jar TrecCarEvaluation-1.0-SNAPSHOT-jar-with-dependencies.jar ../data/spritzer.cbor.article.qrels ../results/results.spritzer.cbor.article.qrels.1.test
 
 The result will be shown on the terminal as a table of different evaluation measures:
 
