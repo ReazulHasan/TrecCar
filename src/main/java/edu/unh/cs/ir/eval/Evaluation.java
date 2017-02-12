@@ -1,207 +1,67 @@
 package edu.unh.cs.ir.eval;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /**
- * Created by Reazul Hasan Russel on 2/3/2017.
+ * Created by matt on 2/8/17.
  */
 public class Evaluation {
-    private static final int GROUND_TRUTH = 1, EVAL_DATA = 2;
-    private static final String DEFAULT_GROUND_TRUTH = "spritzer.cbor.toplevel.qrels";
-    HashMap<String, ArrayList<EvalData>> mpGroundTruth, mpEvalData;
 
-    /**
-     * Create instance of evaluation by passing the file name of the data file, default ground truth will be parsed.
-     * @param strEvalData
-     */
-    public Evaluation(String strEvalData){
-        mpGroundTruth = new HashMap<>();
-        mpEvalData = new HashMap<>();
-        readGroundTruth(DEFAULT_GROUND_TRUTH);
-        readEvalData(strEvalData);
+    static public void outputResults(String groundTruth, String trecFormat, IRMeasuresMultiQuery metrics){
+        System.out.println("-----------------------------------------------------------------");
+        System.out.print("Results for:\n");
+        System.out.println(String.format("Ground Truth File:           %s",groundTruth));
+        System.out.println(String.format("Trec Formatted Results File: %s",trecFormat));
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println();
+        System.out.println("Official TREC Metrics: Across All Queries");
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println(String.format("Description                       Trec Measure     Value"));
+        System.out.println(String.format("-----------                       ------------     -----"));
+        System.out.println(String.format("Number of queries                 num_q            %s", metrics.getQueryCount()));
+        System.out.println(String.format("Number of retrieved documents     num_ret          %s", metrics.getTotalRetrieved()));
+        System.out.println(String.format("Relevant documents in corpus      num_rel          %s", metrics.getTotalRelevantInCorpus()));
+        System.out.println(String.format("Relevant documents retrieved      num_rel_ret      %s", metrics.getTotalRelevantRetrieved()));
+        System.out.println(String.format("Mean Average Precision            map              %.4f", metrics.getMeanAveragePrecision()));
+        System.out.println(String.format("Geometric Mean Average Precision  gm_map           %.4f", metrics.getGeometricMeanAveragePrecision()));
+        System.out.println(String.format("R-Precision                       Rprec            %.4f", metrics.getRPrecision()));
+        System.out.println(String.format("Precision@5                       P_5              %.4f", metrics.getPrecision(5)));
+        System.out.println(String.format("Precision@10                      P_10             %.4f", metrics.getPrecision(10)));
+        System.out.println(String.format("Precision@15                      P_15             %.4f", metrics.getPrecision(15)));
+        System.out.println(String.format("Precision@20                      P_20             %.4f", metrics.getPrecision(20)));
+        System.out.println(String.format("Precision@30                      P_30             %.4f", metrics.getPrecision(30)));
+        System.out.println(String.format("Precision@100                     P_100            %.4f", metrics.getPrecision(100)));
+        System.out.println(String.format("Precision@200                     P_200            %.4f", metrics.getPrecision(200)));
+        System.out.println(String.format("Precision@500                     P_500            %.4f", metrics.getPrecision(500)));
+        System.out.println(String.format("Precision@1000                    P_1000           %.4f", metrics.getPrecision(1000)));
+        System.out.println();
+        System.out.println("Additional:");
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println(String.format("Balanced F1:                                       %.4f",metrics.getMeanAverageBalancedF1()));
+
+
     }
 
-    /**
-     * Constructor to create an object of Evaluation class with the two input file names to be evaluated
-     * @param strGroundTruth
-     * @param strEvalData
-     */
-    public Evaluation(String strGroundTruth, String strEvalData){
-        mpGroundTruth = new HashMap<>();
-        mpEvalData = new HashMap<>();
-        readGroundTruth(strGroundTruth);
-        readEvalData(strEvalData);
-    }
+    public static void main(String [] args){
 
-    /**
-     * get the hashmap containing the parsed ground truth
-     * @return a hashmap of parsed data
-     */
-    public HashMap<String, ArrayList<EvalData>> getGroundTruth(){
-        return mpGroundTruth;
-    }
-
-    /**
-     * get the list of the values for the key
-     * @param key
-     * @return an array list containing the parsed ground truth data
-     */
-    public ArrayList<EvalData> getGroundTruth(String key){
-        return mpGroundTruth.get(key);
-    }
-
-    /**
-     * get the hashmap containing the parsed data to be evaluated
-     * @return a hashmap of parsed data
-     */
-    public HashMap<String, ArrayList<EvalData>> getEvalData(){
-        return mpEvalData;
-    }
-
-    /**
-     * get the list of the values for the key
-     * @param key
-     * @return an array list containing the parsed evaluation data
-     */
-    public ArrayList<EvalData> getEvalData(String key){
-        return mpEvalData.get(key);
-    }
-
-    /**
-     * Returns an arraylist of RelevancyResult objects for each query evaluated
-     * in the input results trec_eval formatted file.
-     *
-     * @return Arraylist of all query relevancy result
-     */
-    public ArrayList<RelevancyResult> getRelevancyResults(){
-
-        ArrayList<RelevancyResult> relevancyResults = new ArrayList<>();
-        ArrayList<String> groundTruthResults= new ArrayList<>();
-
-        for(String key: mpEvalData.keySet()) {
-                int[] results = getResults(key);
-                int totalRelevantDocuments = getCountRelevantGroundTruth(key);
-
-                RelevancyResult relevancyResult = new RelevancyResult(key, results, totalRelevantDocuments);
-                relevancyResults.add(relevancyResult);
-
-        }
-
-        return relevancyResults;
-    }
-
-
-
-    public int[] getResults(String topicIdentifier){
-
-        ArrayList<Integer> results = new ArrayList<>();
-        ArrayList<String> groundTruthResults= new ArrayList<>();
-
-        for(EvalData ed : mpGroundTruth.get(topicIdentifier)){
-            groundTruthResults.add(ed.getId());
-        }
-
-        for(EvalData ed : mpEvalData.get(topicIdentifier)){
-            if (groundTruthResults.contains(ed.getId())){
-                results.add(1);
-            }
-            else{
-                results.add(0);
-            }
-        }
-
-        int[] intResults = new int[results.size()];
-        for (int i = 0; i < intResults.length; i++) {
-            intResults[i] = results.get(i);
-        }
-
-        return intResults;
-    }
-
-    /**
-     * read ground truth data
-     * @param file
-     */
-    private void readGroundTruth(String file){
-        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-            for(String line; (line = br.readLine()) != null; ) {
-                String ar[] = line.split(" ");
-//                System.out.println("Ground Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
-                if(mpGroundTruth.containsKey(ar[0]))
-                    mpGroundTruth.get(ar[0]).add(new EvalData(ar[2], ar[3]));
-                else{
-                    mpGroundTruth.put(ar[0], new ArrayList<>());
-                    mpGroundTruth.get(ar[0]).add(new EvalData(ar[2], ar[3]));
-                }
-            }
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * read evaluation data
-     * @param file
-     */
-    private void readEvalData(String file){
-        mpEvalData = new HashMap<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-            for(String line; (line = br.readLine()) != null; ) {
-                //System.out.println("line: "+line);
-                String ar[] = line.split("\\s+");
-                //System.out.println(" ar size: "+ar.length);
-//                System.out.println("Eval Data: "+line+ ", "+mpGroundTruth.size()+", "+mpEvalData.size());
-                if(mpEvalData.containsKey(ar[0]))
-                    mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
-                else{
-                    mpEvalData.put(ar[0], new ArrayList<>());
-                    mpEvalData.get(ar[0]).add(new EvalData(ar[2], ar[4]));
-                }
-            }
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * get the total count of matched documents for the given query in ground truth
-     * @param query
-     * @return relevantCount
-     */
-    public int getCountRelevantGroundTruth(String query){
-        return mpGroundTruth.get(query).size();
-    }
-
-    /**
-     * get the total count of matched documents for the given query in evaluation data
-     * @param query
-     * @return relevantCount
-     */
-    public int getCountRelevantEvalData(String query){
-        return mpEvalData.get(query).size();
-    }
-
-//    public static void main(String arg[]){
-//        //System.out.println("Hello Evaluation! "+arg[0]);
-//        //spritzer.cbor.article.qrels results\trec_run.spritzer.cbor.article.qrels.2.test
-//        if(arg.length<2){
+//ToDO: Enable args
+//        if(args.length<2){
 //            System.out.println("Please enter the ground truth & evaluation file names as command line arguments");
 //            System.exit(0);
 //        }
-//        System.out.println(arg[0]+" "+arg[1]);
-//        Evaluation eval = new Evaluation(arg[0], arg[1]);
-//        //eval.readData(arg[0], GROUND_TRUTH);
-//        HashMap<String, ArrayList<EvalData>> mpGt = eval.getGroundTruth();
-//        HashMap<String, ArrayList<EvalData>> mpEd = eval.getEvalData();
-//        ArrayList<EvalData> al = eval.getEvalData("Green%20sea%20turtle");//mpEd.get("Green%20sea%20turtle");
-//        for(EvalData ed : al){
-//            System.out.println("id: "+ed.getId());
-//        }
-//        System.out.println("mpGt.size: "+mpGt.size()+", mpEd.size: "+mpEd.size());
-//        System.out.println(eval.getRelevancyResults());
-//    }
+//        System.out.println(args[0]+" "+args[1]);
+//        TrecResultsParser eval = new TrecResultsParser(args[0], args[1]);
+
+        String qrelsFormattedGroundTruthFileName="spritzer-v1.4/spritzer.cbor.hierarchical.qrels";
+//
+        String trecFormattedResultsFileName="results/results.spritzer.cbor.hierarchical.qrels.ragged.test";
+
+
+
+        TrecResultsParser eval = new TrecResultsParser(qrelsFormattedGroundTruthFileName,trecFormattedResultsFileName);
+        IRMeasuresMultiQuery metrics = new IRMeasuresMultiQuery(eval.getRelevancyResults());
+        outputResults(qrelsFormattedGroundTruthFileName, trecFormattedResultsFileName,metrics);
+
+
+
+
+    }
 }

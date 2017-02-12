@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by matt on 2/8/17.
  */
-class EvaluationTest {
-    private Evaluation eval;
+class TrecResultsParserTest {
+    private TrecResultsParser eval;
 
     private ArrayList<RelevancyResult> spritzerCborArticleQrels2;
-    private ClassificationAggregatedMetrics metrics;
+    private IRMeasuresMultiQuery metrics;
     private String nukeArticle2Query;
     private String turtleArticle2Query;
     private String biofuelArticle2Query;
@@ -33,8 +33,8 @@ class EvaluationTest {
 
     @BeforeEach
     void setUp() {
-        eval = new Evaluation("spritzer.cbor.article.qrels",
-                "results.spritzer.cbor.article.qrels.test");
+        eval = new TrecResultsParser("spritzer-v1.4/spritzer.cbor.article.qrels",
+                "results/results.spritzer.cbor.article.qrels.1.test");
 
 
         nukeArticle2Query = "Behavior%20of%20nuclear%20fuel%20during%20a%20reactor%20accident";
@@ -59,10 +59,10 @@ class EvaluationTest {
     @Test
     void article2RelevancyResponse() {
 
-        String qrelsFormattedGroundTruthFileName="spritzer.cbor.article.qrels";
+        String qrelsFormattedGroundTruthFileName="spritzer-v1.4/spritzer.cbor.article.qrels";
         String trecFormattedResultsFileName="results/results.spritzer.cbor.article.qrels.2.test";
 
-        eval = new Evaluation(qrelsFormattedGroundTruthFileName,trecFormattedResultsFileName);
+        eval = new TrecResultsParser(qrelsFormattedGroundTruthFileName,trecFormattedResultsFileName);
         ArrayList<RelevancyResult> relevancyResults = eval.getRelevancyResults();
 
         //should return 3 query RelevancyResult objects

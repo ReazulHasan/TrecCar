@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 /**
- * Unit tests for ClassificationBaseMetrics class.
+ * Unit tests for IRMeasuresSingleQuery class.
  */
-class ClassificationBaseMetricsTest {
+class IRMeasuresSingleQueryTest {
 
     private int[] baseResults;
     private ArrayList<Relevancy> baseRelevancyResults;
-    private ClassificationBaseMetrics eval;
+    private IRMeasuresSingleQuery eval;
 
     @Test
     void getResults() {
@@ -27,7 +27,7 @@ class ClassificationBaseMetricsTest {
     @Test
     void throwsIllegalArgument(){
         int [] results ={0,1,2,1,0};
-        assertThrows(IllegalArgumentException.class, () -> {new ClassificationBaseMetrics(results);});
+        assertThrows(IllegalArgumentException.class, () -> {new IRMeasuresSingleQuery(results);});
     }
 
     @Test
@@ -44,7 +44,7 @@ class ClassificationBaseMetricsTest {
     @Test
     void getTotalRelevant2(){
         int totalRelevant=10;
-        eval = new ClassificationBaseMetrics(baseResults,totalRelevant);
+        eval = new IRMeasuresSingleQuery(baseResults,totalRelevant);
         assertEquals(totalRelevant, eval.getTotalRelevantCount());
     }
 
@@ -92,7 +92,7 @@ class ClassificationBaseMetricsTest {
     void getRecall2(){
         int totalRelevant =10;
         double recall = 4.0/totalRelevant;
-        eval = new ClassificationBaseMetrics(baseResults,totalRelevant);
+        eval = new IRMeasuresSingleQuery(baseResults,totalRelevant);
         assertEquals(recall, eval.getRecall(),0.001);
     }
 
@@ -120,7 +120,7 @@ class ClassificationBaseMetricsTest {
         int[] results = {1,0,1,0,0,1,0,0,1,1};
         double avgPrecision = 0.62;
 
-        eval = new ClassificationBaseMetrics(results);
+        eval = new IRMeasuresSingleQuery(results);
         assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
     }
 
@@ -129,7 +129,7 @@ class ClassificationBaseMetricsTest {
         int[] results = {0,1,0,0,1,0,1,0,0,0};
         double avgPrecision = 0.44;
 
-        eval = new ClassificationBaseMetrics(results);
+        eval = new IRMeasuresSingleQuery(results);
         assertEquals(avgPrecision, eval.getAveragePrecision(), 0.01);
     }
 
@@ -148,6 +148,6 @@ class ClassificationBaseMetricsTest {
         baseRelevancyResults.add(Relevancy.NOT_RELEVANT); //8
         baseRelevancyResults.add(Relevancy.NOT_RELEVANT); //9
 
-        eval = new ClassificationBaseMetrics(baseResults);
+        eval = new IRMeasuresSingleQuery(baseResults);
     }
 }

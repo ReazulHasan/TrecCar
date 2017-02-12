@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by matt on 2/7/17.
  */
-class ClassificationAggregatedMetricsTest {
+class IRMeasuresMultiQueryTest {
     int[] results1;
     int[] results2;
     int[] results3;
@@ -19,11 +19,11 @@ class ClassificationAggregatedMetricsTest {
     private ArrayList<Relevancy> resultsRelevancy2;
     private ArrayList<Relevancy> resultsRelevancy3;
 
-    private ClassificationBaseMetrics eval1;
-    private ClassificationBaseMetrics eval2;
-    private ClassificationBaseMetrics eval3;
+    private IRMeasuresSingleQuery eval1;
+    private IRMeasuresSingleQuery eval2;
+    private IRMeasuresSingleQuery eval3;
 
-    ClassificationAggregatedMetrics evals;
+    IRMeasuresMultiQuery evals;
 
     @BeforeEach
     void setUp() {
@@ -67,11 +67,11 @@ class ClassificationAggregatedMetricsTest {
         resultsRelevancy3.add(Relevancy.NOT_RELEVANT); //8
         resultsRelevancy3.add(Relevancy.RELEVANT); //9
 
-        eval1 = new ClassificationBaseMetrics(results1);
-        eval2 = new ClassificationBaseMetrics(results2);
-        eval3 = new ClassificationBaseMetrics(results3);
+        eval1 = new IRMeasuresSingleQuery(results1);
+        eval2 = new IRMeasuresSingleQuery(results2);
+        eval3 = new IRMeasuresSingleQuery(results3);
 
-        ArrayList<ClassificationBaseMetrics> evalList = new ArrayList<>();
+        ArrayList<IRMeasuresSingleQuery> evalList = new ArrayList<>();
         evalList.add(eval1);
         evalList.add(eval2);
         evalList.add(eval3);
@@ -85,13 +85,13 @@ class ClassificationAggregatedMetricsTest {
         relevancyResults.add(r2);
         relevancyResults.add(r3);
 
-         evals= new ClassificationAggregatedMetrics(relevancyResults);
+         evals= new IRMeasuresMultiQuery(relevancyResults);
     }
 
     @Test
     void testBaseMetrics() {
 
-        ClassificationBaseMetrics c1 = evals.getBaseMetrics("q1");
+        IRMeasuresSingleQuery c1 = evals.getBaseMetrics("q1");
         assertArrayEquals(results1,c1.getIntResults());
         assertArrayEquals(results2,evals.getBaseMetrics("q2").getIntResults());
         assertArrayEquals(results3,evals.getBaseMetrics("q3").getIntResults());
@@ -148,11 +148,11 @@ class ClassificationAggregatedMetricsTest {
 
         double rPrecision = (p1+p2+p3)/3;
 
-        eval1 = new ClassificationBaseMetrics(results1,relevant1);
-        eval2 = new ClassificationBaseMetrics(results2, relevant2);
-        eval3 = new ClassificationBaseMetrics(results3, relevant3);
+        eval1 = new IRMeasuresSingleQuery(results1,relevant1);
+        eval2 = new IRMeasuresSingleQuery(results2, relevant2);
+        eval3 = new IRMeasuresSingleQuery(results3, relevant3);
 
-        evals= new ClassificationAggregatedMetrics();
+        evals= new IRMeasuresMultiQuery();
         evals.addMetrics(eval1);
         evals.addMetrics(eval2);
         evals.addMetrics(eval3);
@@ -170,10 +170,10 @@ class ClassificationAggregatedMetricsTest {
 
         double map = 0.53;
 
-        eval1 = new ClassificationBaseMetrics(results1);
-        eval2 = new ClassificationBaseMetrics(results2);
+        eval1 = new IRMeasuresSingleQuery(results1);
+        eval2 = new IRMeasuresSingleQuery(results2);
 
-        evals= new ClassificationAggregatedMetrics();
+        evals= new IRMeasuresMultiQuery();
         evals.addMetrics(eval1);
         evals.addMetrics(eval2);
 

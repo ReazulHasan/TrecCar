@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class calculates basic information retrieval measures for a single query.
  */
-public class ClassificationBaseMetrics {
+public class IRMeasuresSingleQuery {
 
     private ArrayList<Relevancy> results;
     private int[] intResults;
@@ -21,7 +21,7 @@ public class ClassificationBaseMetrics {
      * example {1,0,1,0} where the first and third documents are relevant and the second
      * and fourth documents are not relevant.
      */
-    public ClassificationBaseMetrics(int [] results) {
+    public IRMeasuresSingleQuery(int [] results) {
 
         loadResults(results);
     }
@@ -37,7 +37,7 @@ public class ClassificationBaseMetrics {
      * and fourth documents are not relevant.
      * @param totalRelevant Total number of relevant documents in the corpus
      */
-    public ClassificationBaseMetrics(int [] results, int totalRelevant) {
+    public IRMeasuresSingleQuery(int [] results, int totalRelevant) {
 
         loadResults(results);
 
@@ -49,7 +49,7 @@ public class ClassificationBaseMetrics {
      * Constructor takes a {@link RelevancyResult} object
      * @param relevancyResult RelevancyResult object
      */
-    public ClassificationBaseMetrics(RelevancyResult relevancyResult){
+    public IRMeasuresSingleQuery(RelevancyResult relevancyResult){
         loadResults(relevancyResult.getResults());
         this.totalRelevant=relevancyResult.getTotalRelevantDocuments();
         this.query=relevancyResult.getQuery();
