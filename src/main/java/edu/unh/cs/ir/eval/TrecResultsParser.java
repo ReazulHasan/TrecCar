@@ -85,10 +85,8 @@ public class TrecResultsParser {
         for(String key: mpEvalData.keySet()) {
                 int[] results = getResults(key);
                 int totalRelevantDocuments = getCountRelevantGroundTruth(key);
-
                 RelevancyResult relevancyResult = new RelevancyResult(key, results, totalRelevantDocuments);
                 relevancyResults.add(relevancyResult);
-
         }
 
         return relevancyResults;

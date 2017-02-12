@@ -6,6 +6,11 @@ package edu.unh.cs.ir.eval;
 public class TrecResultsData {
     String id, relevance;
 
+    /**
+     * Constructor to create the result object
+     * @param id
+     * @param relevance
+     */
     public TrecResultsData(String id, String relevance){
         this.id = id;
         this.relevance = relevance;

@@ -29,7 +29,7 @@ public class IRMeasuresMultiQuery {
 
     /**
      * Creates a class using a passed in ArrayList of {@link RelevancyResult} objects
-     *
+     * @param relevancyResults
      */
     public IRMeasuresMultiQuery(ArrayList<RelevancyResult> relevancyResults){
         this.results = new ArrayList<>();
