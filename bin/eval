@@ -1,0 +1,6 @@
+#!/bin/bash
+# eval <qrels> <trec formatted results>
+	
+java -jar ../target/TrecCarEvaluation-1.0-SNAPSHOT-jar-with-dependencies.jar $1 $2
+
+
