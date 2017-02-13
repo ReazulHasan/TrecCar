@@ -33,7 +33,7 @@ class TrecResultsParserTest {
 
     @BeforeEach
     void setUp() {
-        eval = new TrecResultsParser("spritzer-v1.4/spritzer.cbor.article.qrels",
+        eval = new TrecResultsParser("data/spritzer.cbor.article.qrels",
                 "results/results.spritzer.cbor.article.qrels.1.test");
 
 
@@ -59,7 +59,7 @@ class TrecResultsParserTest {
     @Test
     void article2RelevancyResponse() {
 
-        String qrelsFormattedGroundTruthFileName="spritzer-v1.4/spritzer.cbor.article.qrels";
+        String qrelsFormattedGroundTruthFileName="data/spritzer.cbor.article.qrels";
         String trecFormattedResultsFileName="results/results.spritzer.cbor.article.qrels.2.test";
 
         eval = new TrecResultsParser(qrelsFormattedGroundTruthFileName,trecFormattedResultsFileName);
