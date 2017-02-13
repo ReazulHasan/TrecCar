@@ -2,6 +2,9 @@
 
 ## Steps to compile, intall & run the framework on Linux enviroment:
 
+Pre-requisites: Code requires Oracle JDK 1.8 and Maven to be installed on the linux system.
+
+
 1. Clone the project by running the command:
 ```
     git clone https://github.com/ReazulHasan/TrecCar.git
